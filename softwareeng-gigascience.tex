@@ -1,0 +1,412 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+%\RequirePackage{natbib}
+%\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Commentary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Ten recommendations for software engineering in big data science}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
+   corref={aff1},                       % id of corresponding address, if any
+   email={hastings@ebi.ac.uk}   % email address
+]{\inits{JH}\fnm{Janna} \snm{Hastings}}
+\author[
+   addressref={aff1},
+   email={kenneth@ebi.ac.uk}
+]{\inits{KH}\fnm{Kenneth} \snm{Haug}}
+\author[
+   addressref={aff1},
+   email={steinbeck@ebi.ac.uk}
+]{\inits{CS}\fnm{Christoph} \snm{Steinbeck}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address[id=aff1]{%                           % unique id
+  \orgname{Cheminformatics and Metabolism, European Molecular Biology Laboratory -- European Bioinformatics Institute}, % university, etc
+  \street{Wellcome Trust Genome Campus},                     %
+  %\postcode{}                                % post or zip code
+  \city{Hinxton},                              % city
+  \cny{UK}                                    % country
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract} % abstract
+%\parttitle{First part title} %if any
+Scientific research in the context of big data requires a backbone of well-operating software. But scientific researchers are typically not trained in software engineering. In this commentary we give ten recommendations that researchers can follow when creating software applications, to ensure the usability, sustainability and practicality of their codebases. 
+
+%\parttitle{Second part title} %if any
+%Text for this section.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{big data}
+\kwd{software engineering}
+\kwd{best practices}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+\section*{Background}
+
+More and more scientific research is turning to 'omics big data as fertile ground in which to investigate hypotheses. Generating and analysing these data, along with their storage and management in long-term repositories, is clearly not possible without computational tools, including sophisticated software. Thus, researchers find themselves becoming software engineers. 
+
+However, scientific researchers are not usually trained in software engineering. They pick their skills up on the fly, as they are needed, and while they may end up being very effective software generators, their code may nevertheless end up being difficult and costly to maintain or re-use. 
+
+This is a waste. To address this challenge, we have compiled ten recommendations for software engineering that are guaranteed to improve the code base of any researcher if followed. 
+
+\section*{Recommendations}
+
+\subsection*{1. Keep It Simple}
+
+Every coding project starts somewhere. And here's the first golden rule of thumb: \textit{start as simply as you possibly can}. Significantly more problems are created by over-engineering than by under-engineering. So do the simplest thing that could possibly work, and then double-check it really does work. 
+
+Be careful to design the data model first and the methods (algorithms) afterwards. A clean data model leads naturally to efficient algorithms. Elegance in data model is the best kind of simplicity; strive for it. 
+
+\subsection*{2. Don't Repeat Yourself}
+
+Once you've got started and you're using the simplest approach to implement your requirement, you'll soon encounter another requirement that is similar to the one you just coded up the implementation for. Don't, however, be tempted to use the copy-paste-modify approach to software engineering. Even though this \textit{appears} the simplest approach, it won't remain simple, because important functionality will end up being duplicated across the two programs. This is \textit{bad}. When it comes time to change that piece of functionality -- and believe us, the time WILL come -- you'll have to do it twice. And that will take twice as long. You'll end up forgetting some obscure places you copied that bit of code to, and there will be bugs. Consider writing a shared library with a generic method that you can call from anywhere.  
+
+\subsection*{3. Use A Modular Design}
+
+Modules act as shared building blocks that can be glued together to achieve overall system functionality. Modules are units of software -- like jigsaw pieces -- that are in themselves functionally self-sufficient. They hide the details of their implementation behind a public interface, and can thus be changed behind the scenes without impacting downstream modules that use them. They should be interrelated only through their public interfaces with just a few, well-tested methods. 
+
+\subsection*{4. Test, Test And Test}
+
+We know this might seem strange to some readers, but apparently being the engineer for a software program hinders your ability to objectively and thoroughly test it. Most large software development organizations employ different groups of people to test the software and develop it. This is a luxury not available in most research labs, but there are other robust strategies available to even the smallest project. 
+
+You can write software that tests units of functionality -- unit tests -- which is then executed automatically on a regular basis, at least every time you make changes to the system. Some software engineers take this to the level where they turn their development cycle around by first writing the tests and only subsequently coding the actual functionality. Your test then serves as a specification. Make sure your tests are exhaustive in the possible input that might be sent to the program -- and that is possible in the metaphysical sense, not only that which you think might be reasonable. 
+
+You can also use the services of the best and most thorough testers available to you: your users. 
+
+\subsection*{5. Involve your Users}
+
+Your users know what they need the software to do, and they are often desperate to tell you. They may even have real data already waiting. Listen to them, and let them try your software out, as early as possible. Interview them in their labs, or invite them over to visit you. Have a mailing list and an issue tracker, and pay close attention to what comes in.  
+
+Many sophisticated methods have been developed in the field of user experience analysis. In an open source software development paradigm (increasingly popular for many research contexts), typically your users can become co-developers. In closed-source and commercial paradigms, you may have to work harder to get that input from your users, but it is still do-able. Offer early access beta versions for free, and track their usage. Hold an interactive workshop \cite{pavelin2014} -- you'll be amazed at how much valuable input you will get. 
+
+But beware: sometimes, users ask for too much. 
+
+\subsection*{6. Resist Gold Plating}
+
+Learn to tell the difference between essential features and the long list of wishes your users may have. Prioritise aggressively and with as broad a collection of stakeholders as possible, perhaps using ``game-storming'' techniques \cite{gamestorm}.   
+
+Gold plating is a challenge in all phases of development, not only in the early stages of requirements analysis. In its most mischievous disguise it appears as slow scope creep where just a little something is added in every iterative project meeting. Those little somethings add up. 
+
+\subsection*{7. Document Everything}
+
+Unless you look at it every day, you will eventually forget what is going on in code you wrote a month ago. Documentation is your ally. Write comprehensive documentation to help other developers who may need to take over your code, and also to help the future you. Use code comments for in-line documentation, especially for any technically challenging blocks, and your public interface methods. Note down the expected and allowed input and say what will happen if the user does something that is not allowed. But don't go overboard -- like if your comments essentially mirror the exact detail of the perfectly comprehensible code on a line-by-line basis. Meaningful, readable variable names are another form of documentation: use them. And beware of allowing your comments to become stale in the maintenance phase. Stale comments tell lies. 
+
+In addition to the in-line code comments, write a module guide for each module as an easily accessible webpage or PDF. Explain the higher level view: what is the purpose of this module, how it fits together with other modules in your software suite, and how to get started using it. 
+
+\subsection*{8. Avoid Spaghetti}
+
+Since GOTO-like commands fell out of favour several decades ago, you might be of the impression that spaghetti code is a thing of the past. Unfortunately, you'd be wrong. Spaghetti code is alive and well, only it now lives in inter-method and inter-module relationships. Debugging -- stepping through your code as it executes line by line -- can help you diagnose modern-day spaghetti code. Beware module designs where for every unit of functionality you have to step through several different modules to discover where the error is, and along the way you've long lost the record of what the original method was actually doing or what the erroneous input was. 
+
+
+\subsection*{9. Optimise Last}
+
+Beware optimising too early. Yes, your big data application is performance-critical and you already know it will be important to optimize. Nevertheless, until you truly encounter the wide range of real data that your software will eventually run against in your production environment, you will not be able to anticipate where the bottlenecks will lie. Develop the correct functionality first, deploy it and then continuously improve it using the real evaluation of the system running time as a guide (while your unit tests keep checking that the system is doing what it should). 
+
+\subsection*{10. Evolution, Not Revolution}
+
+Once your system is running, its implementation detail will start to gather some dust. You'll have bolted on or squeezed in bits of additional functionality that were not anticipated at the start, the original developers will have left the organization and migrated to the Canaries where they don't respond to your pleas for answers to your questions, and the net effect is that maintenance will become tougher and tougher. Take time on a regular basis to revisit the overall codebase. Can it be renovated and improved? Use a good version control system (e.g. Git, SVN) and proceed with caution -- tackling one module at a time. Don't be afraid to revert your changes. 
+
+But avoid the urge to rewrite the entire system from the beginning unless it is really the only option or the system is very small. Chances are you will never finish the rewrite -- a staggering number of such projects are abandoned every year across a wide range of different industries. This is especially the case for systems that somehow managed to be written without following the preceding 9 recommendations. They are difficult to understand, there are no unit tests and the only documentation about what the system does is reading the code. 
+
+\section*{Conclusion}
+
+Software engineering for big data science poses novel challenges, perhaps the foremost of which is that the software output is not yet widely considered a primary research outcome. The research context tends to encourage a rapid turnover of staff with the result that knowledge about legacy systems is lost. There is a shortage of software engineering-specific training. And ``publish or perish'' culture may incentivise taking shortcuts. If these recommendations are followed, it may go some way towards mitigating these negative influences. 
+
+Many of the ideas reported here have been influenced by \textit{The Pragmatic Programmer} \cite{pragprog}, one of the most important books for any aspiring or experienced software engineer to read. These recommendations are our opinion only, based on our experiences engineering software for industry and academia, and as custodians of many software projects. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+
+\section*{Competing interests}
+  The authors declare that they have no competing interests.
+
+\section*{Author's contributions}
+    JH conceived of the idea and wrote the initial draft. KH and CS contributed to idea development and writing the manuscript. All authors have read and approved the final version. 
+
+\section*{Acknowledgements}
+  This short contribution is based on a presentation given by JH at the 2014 annual Metabolomics conference in Tsuruoka, Japan. The authors would like to thank Saravanan Dayalan for organising the workshop and allowing JH the opportunity to present. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file
+\bibliography{bmc_article}      % Bibliography file (usually '*.bib' )
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+%\section*{Figures}
+%  \begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      A short description of the figure content
+%      should go here.}
+%      \end{figure}
+
+%\begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      Figure legend text.}
+%      \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+%\section*{Tables}
+%\begin{table}[h!]
+%\caption{Sample table title. This is where the description of the table should go.}
+%      \begin{tabular}{cccc}
+%        \hline
+%           & B1  &B2   & B3\\ \hline
+%        A1 & 0.1 & 0.2 & 0.3\\
+%        A2 & ... & ..  & .\\
+%        A3 & ..  & .   & .\\ \hline
+%      \end{tabular}
+%\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section*{Additional Files}
+%  \subsection*{Additional file 1 --- Sample additional file title}
+%    Additional file descriptions text (including details of how to
+%    view the file, if it is in a non-standard format or the file extension).  This might
+%    refer to a multi-page table or a figure.
+
+  %\subsection*{Additional file 2 --- Sample additional file title}
+   % Additional file descriptions text.
+
+
+\end{backmatter}
+\end{document}
