@@ -234,7 +234,7 @@ Research in the expanding context of data-driven science requires a backbone of 
 %%
 \section*{Background}
 
-Scientific research increasingly requires larger and larger datasets in which to investigate hypotheses. Analysing and interpreting these data is not possible without computational tools \cite{goble2014}, and as the frontier of science evolves, new tools need to be written. However, scientists might not have received deep training in software engineering. Their code can risk being difficult and costly to maintain and re-use. 
+Scientific research increasingly requires larger and larger datasets in which to investigate hypotheses. Analysing and interpreting these data is not possible without computational tools \cite{goble2014}, and as the frontier of science evolves, new tools need to be written. However, scientists might not have received deep training in software engineering. Their code risks being difficult and costly to maintain and re-use. 
 
 To address this challenge, we have compiled ten software engineering recommendations that aim to improve the software output of any researcher. 
 
@@ -288,17 +288,23 @@ It is better to have two or three lines of code that are easy to understand than
 
 \begin{figure}%
 \includegraphics[width=\columnwidth]{code-snippet.png}%
-\caption{An example of incomprehensible code: What does this code actually do?}%
+\caption{An example of incomprehensible code: What does this code actually do? It contains a bug; is it easy to spot?}%
 \label{fig-incomprehensible}%
 \end{figure}
 
-Write clean code \cite{cleancode} that \textit{you} would \textit{want} to maintain long-term. Meaningful, readable variable names are another form of documentation. 
+Write clean code \cite{cleancode} that \textit{you} would \textit{want} to maintain long-term (e.g. Figure~\ref{fig-comprehensible}). Meaningful, readable variable and method names are a form of documentation. 
+
+\begin{figure}%
+\includegraphics[width=\columnwidth]{code-snippet-fixed.png}%
+\caption{This code peforms the same function, but is written more clearly.}%
+\label{fig-comprehensible}%
+\end{figure}
 
 Write an easily accessible module guide for each module, explaining the higher level view: what is the purpose of this module, how it fits together with other modules, and how to get started using it. 
 
 \subsection*{8. Avoid Spaghetti}
 
-Since GOTO-like commands fell out of favour several decades ago, you might have the impression that spaghetti code is a thing of the past. Unfortunately, spaghetti code is alive and well. It now hides in inter-method and inter-module relationships (see Figure~\ref{fig-spaghetti}). Debugging -- stepping through your code as it executes line by line -- can help you diagnose modern-day spaghetti code. Beware module designs where for every unit of functionality you have to step through several different modules to discover where the error is, and along the way you've long lost the record of what the original method was actually doing or what the erroneous input was. 
+Since GOTO-like commands fell out of favour several decades ago, you might have the impression that spaghetti code is a thing of the past. Unfortunately, spaghetti code is alive and well. It now hides in inter-method and inter-module relationships (see Figure~\ref{fig-spaghetti},\ref{fig-not-spaghetti}). Debugging -- stepping through your code as it executes line by line -- can help you diagnose modern-day spaghetti code. Beware module designs where for every unit of functionality you have to step through several different modules to discover where the error is, and along the way you've long lost the record of what the original method was actually doing or what the erroneous input was. 
 
 \begin{figure}%
 \includegraphics[width=\columnwidth]{ComplexClassDiagram.png}%
@@ -313,6 +319,12 @@ Beware optimising too early. Although research applications are often performanc
 \subsection*{10. Evolution, Not Revolution}
 
 Maintenance becomes tougher as a system gets older. Take time on a regular basis to revisit the codebase. Can it be renovated and improved \cite{refactoring}? Use a good version control system (e.g. Git\footnote{http://git-scm.com/}) and proceed with caution -- tackling one module at a time. Don't be afraid to revert your changes. 
+
+\begin{figure}%
+\includegraphics[width=\columnwidth]{SimpleClassDiagram.png}%
+\caption{The functional units from the biotool architecture can be grouped together in a refactoring process, putting similar functions together. The result may resemble a Model-View-Controller architecture.}%
+\label{fig-not-spaghetti}%
+\end{figure}
 
 But avoid the urge to rewrite an entire system from the beginning unless it is really the only option or the system is very small. Be pragmatic \cite{pragprog} -- you may never finish the rewrite. This is especially true for systems that were written without following the preceding recommendations. 
 
