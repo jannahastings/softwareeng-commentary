@@ -55,6 +55,8 @@
 %\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
 \usepackage{graphicx}
 
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                             %%
 %%  If you wish to display your graphics for   %%
@@ -174,7 +176,7 @@
 
 \begin{abstract} % abstract
 %\parttitle{First part title} %if any
-Research in the expanding context of data-driven science requires a backbone of well-operating software. But scientific researchers are typically not trained at length in software engineering. In this commentary we give ten recommendations that researchers can follow when creating software applications, to ensure the usability, sustainability and practicality of their codebases. 
+Research in the context of data-driven science requires a backbone of well-written software, but scientific researchers are typically not trained at length in software engineering, the principles for creating better software products. To address this gap, in particular for young researchers new to programming, we give ten recommendations to ensure the usability, sustainability and practicality of research software. 
 
 %\parttitle{Second part title} %if any
 %Text for this section.
@@ -234,37 +236,36 @@ Research in the expanding context of data-driven science requires a backbone of 
 %%
 \section*{Background}
 
-Scientific research increasingly requires larger and larger datasets in which to investigate hypotheses. Analysing and interpreting these data is not possible without computational tools \cite{goble2014}, and as the frontier of science evolves, new tools need to be written. However, scientists might not have received deep training in software engineering. Their code risks being difficult and costly to maintain and re-use. 
+Scientific research increasingly harnesses computing as a platform \cite{goble2014}, and the size, complexity, diversity and relatively high availability of research datasets in a variety of formats is a strong driver to deliver well-designed, efficient and maintainable software and tools.
+As the frontier of science evolves, new tools constantly need to be written. However, scientists (particularly hands-on early-career researchers) might not have received training in software engineering \cite{wilson2014bestpractice}, thus their code risks being difficult and costly to maintain and re-use. 
 
-To address this challenge, we have compiled ten software engineering recommendations that aim to improve the software output of any researcher. 
+To address this gap, we have compiled ten brief software engineering recommendations. 
 
 \section*{Recommendations}
 
 \subsection*{1. Keep It Simple}
 
-Every software project starts somewhere. A rule of thumb is to \textit{start as simply as you possibly can}. Significantly more problems are created by over-engineering than under-engineering. So do the simplest thing that could possibly work, and then double-check it really does work. 
+Every software project starts somewhere. A rule of thumb is to \textit{start as simply as you possibly can}. Significantly more problems are created by over-engineering than under-engineering. Simplicity starts with design: a clean\footnote{http://java.dzone.com/articles/what-clean-code-\%E2\%80\%93-quotes} and elegant data model is a kind of simplicity that leads naturally to efficient algorithms.  
+ 
+Do the simplest thing that could possibly work, and then double-check it really does work. 
 
-A clean data model leads naturally to efficient algorithms. Elegance in data model is a kind of simplicity; strive for it. 
+\subsection*{2. Test, Test, Test}
 
-\subsection*{2. Don't Repeat Yourself}
+For objectivity, large software development efforts assign different people to test software than those who develop it. This is a luxury not available in most research labs, but there are robust testing strategies available to even the smallest project. 
 
-Don't be tempted to use the copy-paste-modify coding technique when you encounter similar requirements. Even though this \textit{appears} the simplest approach, it won't remain simple, because important lines of code will end up duplicated. When making changes, you'll have to do them twice, taking twice as long. You may forget an obscure place to which you copied that code, leaving a bug. 
+Unit tests are software tests which are executed automatically on a regular basis. In test \textit{driven} development, the tests are written first, serving as a specification and checking every aspect of the intended functionality as it is developed \cite{tdd}. Make sure that unit tests exhaustively simulate \textit{all possible} -- not only that which seems reasonable -- inputs to each method. 
 
-Consider writing a library with a generic method that you can call from anywhere.  
+\subsection*{3. Don't Repeat Yourself}
 
-\subsection*{3. Use A Modular Design}
+Don't be tempted to use the copy-paste-modify coding technique when you encounter similar requirements. Even though this \textit{appears} the simplest approach, it won't remain simple, because important lines of code will end up duplicated. When making changes, you'll have to do them twice, taking twice as long, and you may forget an obscure place to which you copied that code, leaving a bug. 
 
-Modules act as building blocks that can be glued together to achieve overall system functionality. They hide the details of their implementation behind a public interface, and can thus be internally modified without impacting modules that use them. They should be interrelated with just a few, well-tested methods. 
+Automated tools such as Simian\footnote{http://www.harukizaemon.com/simian/} can help to detect and fix duplication in existing codebases. To fix, consider writing a library with methods that can be called when needed.  
 
-Scrutinise modules and libraries that already exist for the functionality you need. Don't rewrite what you can profitably re-use.   
+\subsection*{4. Use A Modular Design}
 
-\subsection*{4. Test, Test, Test}
+Modules act as building blocks that can be glued together to achieve overall system functionality. They hide the details of their implementation behind a public interface, which provides all the methods that should be used. Users should code -- and test -- to the interface rather than the implementation \cite{effectivejava2008}. Thus, concrete implementation details can change without impacting downstream users of the module. APIs (application programming interfaces) can be shared between different implementation providers. 
 
-For objectivity, large software development efforts assign different people to test software than develop it. This is a luxury not available in most research labs, but there are robust testing strategies available to even the smallest project. 
-
-You can write software tests which are executed automatically on a regular basis -- unit tests. Such tests can serve as a specification, checking every aspect of the intended functionality as it is developed \cite{tdd}. Make sure the unit tests exhaustively simulate \textit{all possible} -- not only that which seems reasonable -- inputs to each method. 
-
-A valuable hands-on testing resource may be your users.  
+Scrutinise modules and libraries that already exist for the functionality you need. Don't rewrite what you can profitably re-use -- and don't be put off if the best candidate third-party library contains more functionality than you need (now).  
 
 \subsection*{5. Involve Your Users}
 
@@ -272,7 +273,7 @@ Users know what they need software to do. Let them try the software as early as 
 
 Many sophisticated methods have been developed for user experience analysis. For example, you could hold an interactive workshop \cite{pavelin2014}. 
 
-But beware: sometimes, users ask for too much. 
+But beware: sometimes, users ask for too much (feature creep). 
 
 \subsection*{6. Resist Gold Plating}
 
@@ -282,35 +283,35 @@ Gold plating is a challenge in all phases of development, not only in the early 
 
 \subsection*{7. Document Everything}
 
-Comprehensive documentation helps other developers who may take over your code, and also helps the future you. Use code comments for in-line documentation, especially for any technically challenging blocks, and public interface methods. But there is no need for comments that mirror the exact detail of code line-by-line. 
+Comprehensive documentation helps other developers who may take over your code, and also helps the future you. Use code comments for in-line documentation, especially for any technically challenging blocks, and public interface methods. However, there is no need for comments that mirror the exact detail of code line-by-line. 
 
-It is better to have two or three lines of code that are easy to understand than to have one incomprehensible line (e.g. Figure~\ref{fig-incomprehensible})\footnote{For a guide to incomprehensible code generation, see https://www.thc.org/root/phun/unmaintain.html}. 
+It is better to have two or three lines of code that are easy to understand than to have one incomprehensible line (e.g. Figure~\ref{fig-incomprehensible}). 
 
-\begin{figure}%
-\includegraphics[width=\columnwidth]{code-snippet.png}%
-\caption{An example of incomprehensible code: What does this code actually do? It contains a bug; is it easy to spot?}%
-\label{fig-incomprehensible}%
-\end{figure}
+%\begin{figure}%
+%\includegraphics[width=\columnwidth]{code-snippet.png}%
+%\caption{An example of incomprehensible code: What does this code actually do? It contains a bug; is it easy to spot?}%
+%\label{fig-incomprehensible}%
+%\end{figure}
 
 Write clean code \cite{cleancode} that \textit{you} would \textit{want} to maintain long-term (e.g. Figure~\ref{fig-comprehensible}). Meaningful, readable variable and method names are a form of documentation. 
 
-\begin{figure}%
-\includegraphics[width=\columnwidth]{code-snippet-fixed.png}%
-\caption{This code peforms the same function, but is written more clearly.}%
-\label{fig-comprehensible}%
-\end{figure}
+%\begin{figure}%
+%\includegraphics[width=\columnwidth]{code-snippet-fixed.png}%
+%\caption{This code peforms the same function, but is written more clearly.}%
+%\label{fig-comprehensible}%
+%\end{figure}
 
 Write an easily accessible module guide for each module, explaining the higher level view: what is the purpose of this module, how it fits together with other modules, and how to get started using it. 
 
 \subsection*{8. Avoid Spaghetti}
 
-Since GOTO-like commands fell out of favour several decades ago, you might have the impression that spaghetti code is a thing of the past. Unfortunately, spaghetti code is alive and well. It now hides in inter-method and inter-module relationships (see Figure~\ref{fig-spaghetti},\ref{fig-not-spaghetti}). Debugging -- stepping through your code as it executes line by line -- can help you diagnose modern-day spaghetti code. Beware module designs where for every unit of functionality you have to step through several different modules to discover where the error is, and along the way you've long lost the record of what the original method was actually doing or what the erroneous input was. 
+Since GOTO-like commands fell justifiably out of favour several decades ago \cite{dijkstra1968}, you might believe that spaghetti code is a thing of the past. However, a similar phenomenon may be observed in inter-method and inter-module relationships (see Figure~\ref{fig-spaghetti},\ref{fig-not-spaghetti}). Debugging -- stepping through your code as it executes line by line -- can help you diagnose modern-day spaghetti code. Beware module designs where for every unit of functionality you have to step through several different modules to discover where the error is, and along the way you've long lost the record of what the original method was actually doing or what the erroneous input was. The use of effective and granular logging is another way to trace and diagnose problems with the flow through code modules. 
 
-\begin{figure}%
-\includegraphics[width=\columnwidth]{ComplexClassDiagram.png}%
-\caption{An unhealthy module design for `biotool` with multiple interdependencies between different packages. An addition of functionality to the system (such as supporting a new field) requires updating the software in many different places. Refactoring into a simpler architecture would improve maintainability.}%
-\label{fig-spaghetti}%
-\end{figure}
+%\begin{figure}%
+%\includegraphics[width=\columnwidth]{ComplexClassDiagram.png}%
+%\caption{An unhealthy module design for `biotool` with multiple interdependencies between different packages. An addition of functionality to the system (such as supporting a new field) requires updating the software in many different places. Refactoring into a simpler architecture would improve maintainability.}%
+%\label{fig-spaghetti}%
+%\end{figure}
 
 \subsection*{9. Optimise Last}
 
@@ -318,20 +319,21 @@ Beware optimising too early. Although research applications are often performanc
 
 \subsection*{10. Evolution, Not Revolution}
 
-Maintenance becomes tougher as a system gets older. Take time on a regular basis to revisit the codebase. Can it be renovated and improved \cite{refactoring}? Use a good version control system (e.g. Git\footnote{http://git-scm.com/}) and proceed with caution -- tackling one module at a time. Don't be afraid to revert your changes. 
+Maintenance becomes harder as a system gets older. Take time on a regular basis to revisit the codebase. Can it be renovated and improved \cite{refactoring}? However, the urge to rewrite an entire system from the beginning should be avoided, unless it is really the only option or the system is very small. Be pragmatic \cite{pragprog} -- you may never finish the rewrite \cite{brooks1975}. This is especially true for systems that were written without following the preceding recommendations. 
 
-\begin{figure}%
-\includegraphics[width=\columnwidth]{SimpleClassDiagram.png}%
-\caption{The functional units from the biotool architecture can be grouped together in a refactoring process, putting similar functions together. The result may resemble a Model-View-Controller architecture.}%
-\label{fig-not-spaghetti}%
-\end{figure}
+Use a good version control system (e.g. Git\footnote{http://git-scm.com/}), a central repository (e.g. GitHub\footnote{http://github.com/}). In general, not only when refactoring, commit early and commit often. 
 
-But avoid the urge to rewrite an entire system from the beginning unless it is really the only option or the system is very small. Be pragmatic \cite{pragprog} -- you may never finish the rewrite. This is especially true for systems that were written without following the preceding recommendations. 
+%\begin{figure}%
+%\includegraphics[width=\columnwidth]{SimpleClassDiagram.png}%
+%\caption{The functional units from the biotool architecture can be grouped together in a refactoring process, putting similar functions together. The result may resemble a Model-View-Controller architecture.}%
+%\label{fig-not-spaghetti}%
+%\end{figure}
 
 \section*{Conclusion}
 
-Software engineering for research poses novel challenges. One such is that the research context can encourage a rapid turnover of staff, with the result that knowledge about legacy systems is lost. There is a shortage of software engineering-specific training. And ``publish or perish'' culture may incentivise taking shortcuts. If these recommendations are followed, it may go some way towards mitigating these negative influences. 
+Effective software engineering is a challenge in any enterprise, but may be even more so in the research context. Among other reasons, the research context can encourage a rapid turnover of staff, with the result that knowledge about legacy systems is lost. There can be a shortage of software engineering-specific training, and ``publish or perish'' culture may incentivise taking shortcuts. 
 
+The recommendations above give a brief introduction to established best practices in software engineering that may serve as a useful introduction and reference. Some of these recommendations may be debated in some contexts, but nevertheless are important to understand and master. To learn more, Table~\ref{tab:learnmore} lists some additional online and educational resources. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -345,10 +347,10 @@ Software engineering for research poses novel challenges. One such is that the r
   The authors declare that they have no competing interests.
 
 \section*{Author's contributions}
-    JH prepared the initial draft. All authors contributed to, and have read and approved, the final version. 
+  JH prepared the initial draft. All authors contributed to, and have read and approved, the final version. 
 
 \section*{Acknowledgements}
-  This commentary is based on a presentation given by JH at a workshop on Software Engineering held at the 2014 annual Metabolomics conference in Tsuruoka, Japan. The authors would like to thank Saravanan Dayalan for organising the workshop. 
+  This commentary is based on a presentation given by JH at a workshop on Software Engineering held at the 2014 annual Metabolomics conference in Tsuruoka, Japan. The authors would like to thank Saravanan Dayalan for organising the workshop and giving JH the opportunity to present. We would furthermore like to thank Robert P. Davey and Chris Mungall for their careful and extremely helpful reviews of an earlier version of this manuscript. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
 %%                                                         %%
@@ -387,17 +389,31 @@ Software engineering for research poses novel challenges. One such is that the r
 %%
 %% Do not use \listoffigures as most will included as separate files
 
-%\section*{Figures}
-%  \begin{figure}[h!]
-%  \caption{\csentence{Sample figure title.}
-%      A short description of the figure content
-%      should go here.}
-%      \end{figure}
+\section*{Figures}
 
-%\begin{figure}[h!]
-%  \caption{\csentence{Sample figure title.}
-%      Figure legend text.}
-%      \end{figure}
+\begin{figure}[h!]%
+\includegraphics[width=\columnwidth]{code-snippet.png}%
+\caption{An example of incomprehensible code: What does this code actually do? It contains a bug; is it easy to spot?}%
+\label{fig-incomprehensible}%
+\end{figure}
+
+\begin{figure}[h!]%
+\includegraphics[width=\columnwidth]{code-snippet-fixed.png}%
+\caption{This code peforms the same function, but is written more clearly.}%
+\label{fig-comprehensible}%
+\end{figure}
+
+\begin{figure}[h!]%
+\includegraphics[width=\columnwidth]{ComplexClassDiagram.png}%
+\caption{An unhealthy module design for `biotool` with multiple interdependencies between different packages. An addition of functionality to the system (such as supporting a new field) requires updating the software in many different places. Refactoring into a simpler architecture would improve maintainability.}%
+\label{fig-spaghetti}%
+\end{figure}
+
+\begin{figure}[h!]%
+\includegraphics[width=\columnwidth]{SimpleClassDiagram.png}%
+\caption{The functional units from the biotool architecture can be grouped together in a refactoring process, putting similar functions together. The result may resemble a Model-View-Controller architecture.}%
+\label{fig-not-spaghetti}%
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -407,17 +423,17 @@ Software engineering for research poses novel challenges. One such is that the r
 
 %% Use of \listoftables is discouraged.
 %%
-%\section*{Tables}
-%\begin{table}[h!]
-%\caption{Sample table title. This is where the description of the table should go.}
-%      \begin{tabular}{cccc}
-%        \hline
-%           & B1  &B2   & B3\\ \hline
-%        A1 & 0.1 & 0.2 & 0.3\\
-%        A2 & ... & ..  & .\\
-%        A3 & ..  & .   & .\\ \hline
-%      \end{tabular}
-%\end{table}
+\section*{Tables}
+\begin{table}[h!]
+\caption{Further reading. This table lists additional online resources where the interested reader can learn more about good practice in software engineering.}
+\label{tab:learnmore}
+      \begin{tabular}{| p{5cm} | p{5cm} |}
+        \hline
+        Description & URL \\ \hline 
+        Software Carpentry: scientific computing skills, learn online or in face-to-face workshops & http://software-carpentry.org/ \\
+        Learn about how to write maintainable code through counter-examples & http://www.thc.org/root/phun/unmaintain.html \\ \hline
+      \end{tabular}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
