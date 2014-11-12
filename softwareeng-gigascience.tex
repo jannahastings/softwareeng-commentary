@@ -237,7 +237,7 @@ Research in the context of data-driven science requires a backbone of well-writt
 \section*{Background}
 
 Scientific research increasingly harnesses computing as a platform \cite{goble2014}, and the size, complexity, diversity and relatively high availability of research datasets in a variety of formats is a strong driver to deliver well-designed, efficient and maintainable software and tools.
-As the frontier of science evolves, new tools constantly need to be written. However, scientists (particularly hands-on early-career researchers) might not have received training in software engineering \cite{wilson2014bestpractice}, thus their code risks being difficult and costly to maintain and re-use. 
+As the frontier of science evolves, new tools constantly need to be written. However, scientists (particularly early-career researchers) might not have received training in software engineering \cite{wilson2014bestpractice}, thus their code risks being difficult and costly to maintain and re-use. 
 
 To address this gap, we have compiled ten brief software engineering recommendations. 
 
@@ -245,7 +245,7 @@ To address this gap, we have compiled ten brief software engineering recommendat
 
 \subsection*{1. Keep It Simple}
 
-Every software project starts somewhere. A rule of thumb is to \textit{start as simply as you possibly can}. Significantly more problems are created by over-engineering than under-engineering. Simplicity starts with design: a clean\footnote{http://java.dzone.com/articles/what-clean-code-\%E2\%80\%93-quotes} and elegant data model is a kind of simplicity that leads naturally to efficient algorithms.  
+Every software project starts somewhere. A rule of thumb is to \textit{start as simply as you possibly can}. Significantly more problems are created by over-engineering than under-engineering. Simplicity starts with design: a clean and elegant data model is a kind of simplicity that leads naturally to efficient algorithms.  
  
 Do the simplest thing that could possibly work, and then double-check it really does work. 
 
@@ -273,13 +273,11 @@ Users know what they need software to do. Let them try the software as early as 
 
 Many sophisticated methods have been developed for user experience analysis. For example, you could hold an interactive workshop \cite{pavelin2014}. 
 
-But beware: sometimes, users ask for too much (feature creep). 
-
 \subsection*{6. Resist Gold Plating}
 
-Learn to tell the difference between essential features and the long list of wishes users may have. Prioritise aggressively and with as broad a collection of stakeholders as possible, perhaps using ``game-storming'' techniques \cite{gamestorm}.   
+Sometimes, users ask for too much, leading to feature creep or `gold plating'. Learn to tell the difference between essential features and the long list of wishes users may have. Prioritise aggressively and with as broad a collection of stakeholders as possible, perhaps using ``game-storming'' techniques \cite{gamestorm}.   
 
-Gold plating is a challenge in all phases of development, not only in the early stages of requirements analysis. In its most mischievous disguise it appears as slow scope creep where just a little something is added in every iterative project meeting. Those little somethings add up. 
+Gold plating is a challenge in all phases of development, not only in the early stages of requirements analysis. In its most mischievous disguise, just a little something is added in every iterative project meeting. Those little somethings add up. 
 
 \subsection*{7. Document Everything}
 
@@ -350,7 +348,7 @@ The recommendations above give a brief introduction to established best practice
   JH prepared the initial draft. All authors contributed to, and have read and approved, the final version. 
 
 \section*{Acknowledgements}
-  This commentary is based on a presentation given by JH at a workshop on Software Engineering held at the 2014 annual Metabolomics conference in Tsuruoka, Japan. The authors would like to thank Saravanan Dayalan for organising the workshop and giving JH the opportunity to present. We would furthermore like to thank Robert P. Davey and Chris Mungall for their careful and extremely helpful reviews of an earlier version of this manuscript. 
+  This commentary is based on a presentation given by JH at a workshop on Software Engineering held at the 2014 annual Metabolomics conference in Tsuruoka, Japan. The authors would like to thank Saravanan Dayalan for organising the workshop and giving JH the opportunity to present. We would furthermore like to thank Robert P. Davey and Chris Mungall for their careful helpful reviews of an earlier version of this manuscript. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
 %%                                                         %%
@@ -425,13 +423,19 @@ The recommendations above give a brief introduction to established best practice
 %%
 \section*{Tables}
 \begin{table}[h!]
-\caption{Further reading. This table lists additional online resources where the interested reader can learn more about good practice in software engineering.}
+\caption{Further reading. This table lists additional online resources where the interested reader can learn more about software engineering best practices in the research context.}
 \label{tab:learnmore}
-      \begin{tabular}{| p{5cm} | p{5cm} |}
+      \begin{tabular}{| p{5cm} | p{9cm} |}
         \hline
-        Description & URL \\ \hline 
+        \textbf{Description} & \textbf{URL} \\ \hline 
         Software Carpentry: scientific computing skills, learn online or in face-to-face workshops & http://software-carpentry.org/ \\
-        Learn about how to write maintainable code through counter-examples & http://www.thc.org/root/phun/unmaintain.html \\ \hline
+        The Software Sustainability Institute & http://software.ac.uk/ \\ 
+        Learn more about what makes code easy to maintain & http://www.thc.org/root/phun/unmaintain.html \\
+        How to write good unit tests & http://developer.salesforce.com/page/How\_to\_Write\_Good\_Unit\_Tests \\
+        What is clean code? & http://java.dzone.com/articles/what-clean-code-\%E2\%80\%93-quotes \\
+        Introduction to refactoring & http://sourcemaking.com/refactoring/ \\
+        The danger of premature optimization & http://c2.com/cgi/wiki?PrematureOptimization \\
+         \hline
       \end{tabular}
 \end{table}
 
